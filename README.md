@@ -8,7 +8,6 @@ Terraform module implementing an Elastic File-System on AWS
 + variable "subnets" { type = "list" } - List of subnets where the file-system should be available  
   
 ## Optional Inputs:  
-+ variable "security_groups" { default = "" type = "list" } - List of security groups to be given access to the file-system in addition to the SG created
 + variable "performance_mode" { default = "generalPurpose" type = "string" } - "generalPurpose" or "maxIO"
   
 ## Outputs:  

@@ -6,11 +6,11 @@ resource "aws_efs_file_system" "fs" {
     performance_mode = "${var.performance_mode}"
 }
 
-resource "aws_efs_mount_target" "html" {
-    count = "${length(var.subnets)}"
+resource "aws_efs_mount_target" "mount" {
+#    count = "${length(var.subnets)}"
+    count = "${var.subnetcount}"
     file_system_id = "${aws_efs_file_system.fs.id}"
     subnet_id = "${element(var.subnets , count.index ) }"
-#    security_groups = ["${var.security_groups == "" ? aws_security_group.sg.id : concat(aws_security_group.sg.id,var.security_groups)}"]
     security_groups = ["${aws_security_group.sg.id}"]
 }
 
